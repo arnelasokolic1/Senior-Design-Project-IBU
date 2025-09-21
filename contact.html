@@ -2,321 +2,274 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-        }
-    
-        body {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-        }
-    
-        section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #ffffff;
-        }
-    
-        .container {
-            position: relative;
-            min-width: 1100px;
-            min-height: 550px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-    
-        .container .contactInfo {
-            position: absolute;
-            top: 40px;
-            background: #bb1f5d;
-            width: 320px;
-            padding: 80px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            height: calc(100% - 80px);
-            text-align: center;
-        }
-    
-        .container .contactInfo h2 {
-            color: #fff;
-            font-size: 29px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-    
-        .container .contactInfo p {
-            color: #fff;
-            font-weight: 300;
-            margin: 5px 0;
-            font-size: 19px;
-        }
-    
-        .container .contactForm {
-            position: absolute;
-            background-color: #fff;
-            padding: 70px 50px;
-            padding-left: 250px;
-            margin-left: 150px;
-            height: 100%;
-            box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
-            width: 100%;
-        }
-    
-        .container .contactForm h2 {
-            color: #0f3959;
-            font-size: 24px;
-            font-weight: 500;
-        }
-    
-        .container .contactForm .formBox {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding-top: 30px;
-        }
-    
-        .container .contactForm .formBox .inputBox {
-            position: relative;
-            margin: 0 0 35px 0;
-        }
-    
-        .container .contactForm .formBox .inputBox.w50 {
-            width: 47%;
-        }
-    
-        .container .contactForm .formBox .inputBox.w100 {
-            width: 100%;
-        }
-    
-        .container .contactForm .formBox .inputBox input,
-        .container .contactForm .formBox .inputBox textarea {     
-            width: 100%;
-            resize: none;
-            padding: 10px 5px;
-            font-size: 18px;
-            color: #333;
-            border: none;
-            outline: none;
-            border-bottom: 1px solid #777;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-        }
-    
-        .container .contactForm .formBox .inputBox span {
-            position: absolute;
-            left: 5px;
-            padding: 5px 0;
-            pointer-events: none;
-            font-size: 17px;
-            font-weight: 300;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-    
-        .container .contactForm .formBox .inputBox input:focus~span,
-        .container .contactForm .formBox .inputBox input:valid~span,
-        .container .contactForm .formBox .inputBox textarea:focus~span,
-        .container .contactForm .formBox .inputBox textarea:valid~span {
-            transform: translateY(-20px);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: deeppink;
-        }
-    
-        .container .contactForm .formBox .inputBox input[type="submit"] {
-            position: relative;
-            cursor: pointer;
-            background-color: #04286b;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-        }
-    
-        .container .contactForm .formBox .inputBox input[type="submit"]:hover {
-            background-color: #041f52;
-            font-weight: 500;
-        }
-    
-        /* Navbar Styles */
-        .navbar {
-            background: linear-gradient(to left, #181A2F, #242E49, #37415C)
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        .navbar .navbar-brand,
-        .navbar .nav-link {
-            color: white !important;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 18px;
-        }
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
 
-        /* Keep navbar links white on all states */
-        .navbar .nav-link:link,
-        .navbar .nav-link:visited,
-        .navbar .nav-link:hover,
-        .navbar .nav-link:active {
-            color: white !important;
-            text-decoration: none;
-        }
+    body {
+      background: #fdfdfd;
+      color: #333;
+    }
 
-        /* Align Navbar to the Left */
-        .navbar-nav {
-            margin-left: 0;
-        }
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(to left, #181A2F, #242E49, #37415C);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      padding: 0.8rem 2rem;
+    }
 
-        .message {
-            background: #f1f1f1;
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 8px;
-        }
-    
-        .message button {
-            float: right;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
-        }
-    
-        .message button:hover {
-            background-color: #c0392b;
-        }
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+      color: #fff !important;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                min-width: 100%;
-                flex-direction: column;
-                align-items: center;
-            }
+    .navbar .nav-link:hover {
+      color: #bb1f5d !important;
+    }
 
-            .container .contactInfo,
-            .container .contactForm {
-                position: relative;
-                width: 100%;
-                padding: 20px;
-            }
+    /* Contact Section */
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 50px 20px;
+      background: #ffffff;
+    }
 
-            .container .contactInfo {
-                margin-bottom: 20px;
-            }
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      width: 100%;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
 
-            .container .contactForm {
-                padding-left: 20px;
-                margin-left: 0;
-            }
+    /* Contact Info */
+    .contactInfo {
+      background: #bb1f5d;
+      flex: 1;
+      min-width: 300px;
+      padding: 60px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
 
-            .container .contactForm .formBox {
-                flex-direction: column;
-                align-items: stretch;
-            }
+    .contactInfo h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-            .container .contactForm .formBox .inputBox.w50 {
-                width: 100%;
-            }
+    .contactInfo p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
 
-            .container .contactForm .formBox .inputBox {
-                margin-bottom: 20px;
-            }
-        }
+    /* Contact Form */
+    .contactForm {
+      flex: 2;
+      padding: 60px 50px;
+      background: #fff;
+    }
 
-    </style>
-    
+    .contactForm h2 {
+      color: #0f3959;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .formBox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .inputBox {
+      position: relative;
+      flex: 1;
+      min-width: 47%;
+    }
+
+    .inputBox.w100 {
+      flex: 100%;
+    }
+
+    .inputBox input,
+    .inputBox textarea {
+      width: 100%;
+      padding: 12px 10px;
+      border: none;
+      border-bottom: 2px solid #aaa;
+      font-size: 16px;
+      outline: none;
+      background: transparent;
+      transition: 0.3s;
+    }
+
+    .inputBox span {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 16px;
+      color: #777;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .inputBox input:focus~span,
+    .inputBox input:valid~span,
+    .inputBox textarea:focus~span,
+    .inputBox textarea:valid~span {
+      top: -15px;
+      left: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #bb1f5d;
+    }
+
+    .inputBox input:focus,
+    .inputBox textarea:focus {
+      border-bottom: 2px solid #bb1f5d;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: none;
+    }
+
+    /* Submit Button */
+    .inputBox input[type="submit"] {
+      background: linear-gradient(to right, #04286b, #041f52);
+      color: #fff;
+      border-radius: 8px;
+      padding: 14px;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      width: 100%;
+    }
+
+    .inputBox input[type="submit"]:hover {
+      background: #bb1f5d;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .contact-wrapper {
+        flex-direction: column;
+      }
+
+      .contactInfo,
+      .contactForm {
+        flex: 100%;
+        max-width: 100%;
+        border-radius: 0;
+      }
+
+      .inputBox {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="home_page.html">Quiz App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home_page.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About the Quiz</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="fill_in_blanks.html">Fill In The Blanks </a>
-                    </li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home_page.html">Quiz App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home_page.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About the Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="fill_in_blanks.html">Fill In The Blanks</a></li>
+          <li class="nav-item"><a class="nav-link" href="learn_with_us.html">Learn with Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-					<li class="nav-item">
-                        <a class="nav-link" href="learn_with_us.html">Learn with Us</a>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- Contact Section -->
+  <section>
+    <div class="contact-wrapper">
+      <div class="contactInfo">
+        <h2>Contact Us</h2>
+        <p>Arnela Sokolić</p>
+        <p>arnela.sokolic@stu.ibu.edu.ba</p>
+      </div>
 
-    <!-- Contact Section -->
-    <section>
-        <div class="container">
-            <div class="contactInfo">
-                <h2>Contact Us</h2>
-                <p>Arnela Sokolić</p>
-                <p>arnela.sokolic@stu.ibu.edu.ba</p>
-            </div>
+      <div class="contactForm">
+        <h2>Send a Message</h2>
+        <form class="formBox">
+          <div class="inputBox">
+            <input type="text" id="firstName" required>
+            <span>First Name</span>
+          </div>
+          <div class="inputBox">
+            <input type="text" id="lastName" required>
+            <span>Last Name</span>
+          </div>
+          <div class="inputBox">
+            <input type="email" id="email" required>
+            <span>Email</span>
+          </div>
+          <div class="inputBox">
+            <input type="text" id="mobile" required>
+            <span>Mobile Number</span>
+          </div>
+          <div class="inputBox w100">
+            <textarea id="message" required></textarea>
+            <span>Write your message here...</span>
+          </div>
+          <div class="inputBox w100">
+            <input type="submit" value="Submit" id="submitMessage">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-            <div class="contactForm">
-                <h2>Send a Message</h2>
-                <div class="formBox">
-                    <div class="inputBox w50">
-                        <input type="text" id="firstName" required>
-                        <span>First Name</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="text" id="lastName" required>
-                        <span>Last Name</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="email" id="email" required>
-                        <span>Email</span>
-                    </div>
-                    <div class="inputBox w50">
-                        <input type="text" id="mobile" required>
-                        <span>Mobile Number</span>
-                    </div>
-                    <div class="inputBox w100">
-                        <textarea id="message" required></textarea>
-                        <span>Write your message here...</span>
-                    </div>
-                    <div class="inputBox w100">
-                        <input type="submit" value="Submit" id="submitMessage">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
