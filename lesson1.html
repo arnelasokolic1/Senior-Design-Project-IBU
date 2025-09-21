@@ -9,13 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* Keep your original colors and feel */
         body {
             background: linear-gradient(to left, #04286b, #bb1f5d);
             color: white;
             font-family: Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -29,7 +26,6 @@
             font-weight: 700;
         }
 
-        /* Card-like lesson content but keep white box style */
         .lesson-content {
             background-color: white;
             color: #04286b;
@@ -63,17 +59,14 @@
             margin-right: auto;
         }
 
-        /* Navbar Styling (kept as requested) */
         .navbar {
             background: linear-gradient(to left, #181A2F, #242E49, #37415C);
         }
         .navbar .navbar-brand, .navbar .nav-link {
             color: white !important;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 18px;
         }
 
-        /* Return Button (kept original look but slightly improved) */
         .return-btn {
             background: linear-gradient(to left, #04286b, #bb1f5d);
             color: white;
@@ -92,15 +85,6 @@
             box-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
         }
 
-        /* Small helpers */
-        .muted {
-            color: #6c757d;
-        }
-
-        ul.features { padding-left: 1.1rem; }
-        ul.examples { padding-left: 1.1rem; }
-
-        /* Quiz styles */
         .quiz-card { margin-top: 24px; padding: 20px; border-radius: 10px; background: #ffffff; color: #04286b; box-shadow: 0 6px 20px rgba(0,0,0,0.15); max-width: 800px; margin-left:auto; margin-right:auto; text-align:left; }
         .quiz-card h3 { color: #bb1f5d; }
         .btn-primary.custom {
@@ -108,7 +92,6 @@
             border: none;
         }
 
-        /* Responsive tweaks */
         @media (max-width: 768px) {
             .lesson-img { width: 90%; }
             .lesson-content { padding: 22px; font-size: 16px; }
@@ -139,183 +122,61 @@
     <div class="container">
         <h1>What is Blockchain?</h1>
 
-        <!-- Expanded Lesson Content (very long / in-depth for beginners) -->
         <div class="lesson-content" id="lesson1">
-            <h2>Overview — the short version</h2>
-            <p>
-                A <strong>blockchain</strong> is a shared, decentralized digital ledger that stores information in linked blocks.
-                Once information is recorded and confirmed, it is extremely difficult to change. This makes blockchain a useful
-                tool for secure record-keeping where many parties need to trust the same data without a central authority.
-            </p>
-
-            <h3>Blocks, hashes and chaining (the technical core)</h3>
-            <p>
-                Every <strong>block</strong> contains some data (for example: a list of transactions), a timestamp, and a cryptographic
-                <strong>hash</strong>. A hash is like a fingerprint: if the block's contents change even a little, the hash changes entirely.
-                Each block also stores the <strong>previous block's hash</strong>, which links them together and forms a chain. If a malicious actor tries to
-                change an older block, its hash would change and no longer match the next block’s "previous hash" — the network would detect the mismatch.
-            </p>
-
-            <h3>Decentralization and nodes</h3>
-            <p>
-                Instead of one server or bank holding the ledger, many computers (called <strong>nodes</strong>) each keep a copy of the blockchain.
-                Nodes communicate and compare records. This distributed structure prevents a single point of failure and makes it very hard for
-                anyone to secretly alter the data.
-            </p>
-
-            <h3>Consensus: how the network agrees</h3>
-            <p>
-                Because many nodes exist, the network needs rules to decide which new blocks are valid and added to the chain. These rules are called
-                <strong>consensus mechanisms</strong>. Two common ones are:
-            </p>
-            <ul class="features">
-                <li><strong>Proof of Work (PoW)</strong> — miners solve difficult puzzles (using computing power). The first to solve it adds the block and wins a reward. This is used by Bitcoin.</li>
-                <li><strong>Proof of Stake (PoS)</strong> — validators lock (stake) some cryptocurrency to get the right to add blocks. This uses far less energy than PoW and is used by many newer blockchains (e.g., Ethereum after 2022).</li>
-            </ul>
-
-            <h3>Transactions, addresses and wallets</h3>
-            <p>
-                A <strong>transaction</strong> is an action recorded on the blockchain (e.g., Alice sends 1 coin to Bob). To send and receive funds users have:
-            </p>
-            <ul class="features">
-                <li><strong>Public address:</strong> like an email you share for receiving funds.</li>
-                <li><strong>Private key:</strong> a secret code you keep to sign transactions and spend funds. Never share this.</li>
-            </ul>
-            <p>
-                A <strong>wallet</strong> software helps manage addresses and private keys. The blockchain itself only stores transactions, not your private keys.
-            </p>
-
-            <h3>Example: Bitcoin pizza (a beginner’s cautionary tale)</h3>
-            <p>
-                In 2010 a programmer paid <strong>10,000 BTC</strong> for two pizzas — a famous event known as Bitcoin Pizza Day (May 22, 2010).
-                At the time that amount of BTC was cheap; today the same BTC would be worth millions. This story shows both the power and the unpredictability
-                of cryptocurrencies — and why understanding blockchain matters.
-            </p>
-
-            <h3>Types of blockchains</h3>
-            <p>
-                Blockchains can be:
-            </p>
-            <ul class="features">
-                <li><strong>Public</strong> — anyone can join, read and write (e.g., Bitcoin, Ethereum).</li>
-                <li><strong>Private</strong> — access restricted to selected participants (used by companies for internal systems).</li>
-                <li><strong>Consortium</strong> — controlled by a group of organizations that jointly manage the network.</li>
-            </ul>
-
-            <h3>Smart contracts (simple explanation)</h3>
-            <p>
-                A <strong>smart contract</strong> is a program stored on the blockchain that runs automatically when certain conditions are met.
-                Think of it as a vending machine: insert the exact coins and the machine automatically releases the snack — no clerk required.
-                Smart contracts enable decentralized finance (DeFi), tokenization, and automated workflows.
-            </p>
-
-            <h3>Merkle trees (short, useful concept)</h3>
-            <p>
-                To store many transactions efficiently, blockchains often use a structure called a <strong>Merkle tree</strong>. It combines many transaction
-                hashes into a single root hash so verifying that a transaction exists in a block becomes fast and compact.
-                You don't need to memorize Merkle math, but knowing the idea helps with deeper blockchain topics later.
-            </p>
-
-            <h3>Security notes & common attacks (what beginners should watch for)</h3>
-            <ul class="features">
-                <li><strong>Private key loss:</strong> If you lose your private key, you lose access to assets — there's usually no recovery.</li>
-                <li><strong>Phishing & scams:</strong> Fake sites and messages try to trick you into revealing private keys.</li>
-                <li><strong>51% attack (rare on big networks):</strong> If attackers control most of the network's power, they could rewrite history — costly and hard on major blockchains.</li>
-            </ul>
-
-            <h3>Real-world uses (short case studies)</h3>
-            <p>
-                <strong>Supply chain:</strong> A farmer can record when coffee beans were harvested. Each participant (transporter, processor, retailer) adds records so the buyer can verify origin.<br>
-                <strong>Healthcare:</strong> Patient records can be shared across hospitals with patient consent, improving care while preserving tamper-evidence.<br>
-                <strong>Identity:</strong> Digital IDs on blockchain can help people prove who they are without relying on a central database vulnerable to hacks.
-            </p>
-
-            <h3>How to get started (practical next steps)</h3>
-            <ol>
-                <li><strong>Read & watch:</strong> Start with simple explainers and videos about blockchain and Bitcoin/Ethereum basics.</li>
-                <li><strong>Try a wallet:</strong> Create a test wallet and use a small amount (or testnet coins) to send/receive — learn how addresses and keys work.</li>
-                <li><strong>Experiment with a block explorer:</strong> Use a block explorer (e.g., blockchain.info, etherscan.io) to see real transactions and blocks.</li>
-                <li><strong>Build a small project:</strong> For developers — try creating a small smart contract or simple app on a test network.</li>
-            </ol>
-
-            <h3>Glossary (quick reference)</h3>
-            <ul class="features">
-                <li><strong>Block:</strong> A container of transactions.</li>
-                <li><strong>Hash:</strong> Digital fingerprint of data.</li>
-                <li><strong>Node:</strong> A computer running blockchain software.</li>
-                <li><strong>Miner/Validator:</strong> Entity that helps confirm transactions.</li>
-                <li><strong>Smart Contract:</strong> Self-executing code on a blockchain.</li>
-            </ul>
-
-            <h3>Quick summary</h3>
-            <p>
-                Blockchain provides a new way to record and verify information without relying on a single trusted party.
-                Its main strengths are decentralization, immutability and transparency. These properties enable new applications,
-                but also bring new risks and responsibilities (private key management, careful security practices).
-            </p>
-
-            <h3>Reflection & mini exercise</h3>
-            <p>
-                Take two minutes and write a one-sentence answer to this: <em>How would blockchain improve (or not improve) a system you use every day — for example, online shopping, voting, or your school's grading system?</em>
-                Try to include one benefit and one potential drawback.
-            </p>
-
-            <hr />
-
-            
+            <h2>Overview</h2>
+            <p>A <strong>blockchain</strong> is a shared, decentralized digital ledger...</p>
             <img src="imgs/Slika1.png" alt="Blockchain" class="lesson-img">
         </div>
 
-        <!-- Quiz at the end of Lesson 1 -->
+        <!-- Quiz -->
         <div class="quiz-card mt-4" id="quiz">
             <h3>Quick Quiz — check what you learned</h3>
-            <p>Select the best answer and press <strong>Check Answers</strong>. No pressure — this is just to reinforce learning.</p>
 
             <div id="q1" class="mb-3">
                 <strong>1) What links two blocks together?</strong>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1opt" id="q1a" value="a">
-                    <label class="form-check-label" for="q1a">A shared encryption key everyone knows</label>
+                    <input class="form-check-input" type="radio" name="q1opt" value="a">
+                    <label class="form-check-label">A shared encryption key everyone knows</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1opt" id="q1b" value="b">
-                    <label class="form-check-label" for="q1b">The previous block's hash</label>
+                    <input class="form-check-input" type="radio" name="q1opt" value="b">
+                    <label class="form-check-label">The previous block's hash</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1opt" id="q1c" value="c">
-                    <label class="form-check-label" for="q1c">The miner's signature only</label>
+                    <input class="form-check-input" type="radio" name="q1opt" value="c">
+                    <label class="form-check-label">The miner's signature only</label>
                 </div>
             </div>
 
             <div id="q2" class="mb-3">
                 <strong>2) Which of these is a private secret you should never share?</strong>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2opt" id="q2a" value="a">
-                    <label class="form-check-label" for="q2a">Public address</label>
+                    <input class="form-check-input" type="radio" name="q2opt" value="a">
+                    <label class="form-check-label">Public address</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2opt" id="q2b" value="b">
-                    <label class="form-check-label" for="q2b">Private key</label>
+                    <input class="form-check-input" type="radio" name="q2opt" value="b">
+                    <label class="form-check-label">Private key</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2opt" id="q2c" value="c">
-                    <label class="form-check-label" for="q2c">The block hash</label>
+                    <input class="form-check-input" type="radio" name="q2opt" value="c">
+                    <label class="form-check-label">The block hash</label>
                 </div>
             </div>
 
             <div id="q3" class="mb-3">
                 <strong>3) Which consensus mechanism typically uses a lot of electricity?</strong>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3opt" id="q3a" value="a">
-                    <label class="form-check-label" for="q3a">Proof of Stake (PoS)</label>
+                    <input class="form-check-input" type="radio" name="q3opt" value="a">
+                    <label class="form-check-label">Proof of Stake (PoS)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3opt" id="q3b" value="b">
-                    <label class="form-check-label" for="q3b">Proof of Work (PoW)</label>
+                    <input class="form-check-input" type="radio" name="q3opt" value="b">
+                    <label class="form-check-label">Proof of Work (PoW)</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3opt" id="q3c" value="c">
-                    <label class="form-check-label" for="q3c">Federated Voting</label>
+                    <input class="form-check-input" type="radio" name="q3opt" value="c">
+                    <label class="form-check-label">Federated Voting</label>
                 </div>
             </div>
 
@@ -326,9 +187,9 @@
             </div>
 
             <div id="explanations" style="display:none; margin-top:14px; color:#444;">
-                <div><strong>Q1:</strong> Blocks store the previous block's hash which links them — changing a block changes its hash and breaks the chain.</div>
-                <div><strong>Q2:</strong> The private key is secret — it allows spending funds. Never share it.</div>
-                <div><strong>Q3:</strong> Proof of Work requires heavy computation; miners compete using energy-intensive hardware.</div>
+                <div><strong>Q1:</strong> Blocks store the previous block's hash which links them.</div>
+                <div><strong>Q2:</strong> The private key is secret — never share it.</div>
+                <div><strong>Q3:</strong> Proof of Work uses heavy computation.</div>
             </div>
         </div>
 
@@ -338,15 +199,15 @@
         </div>
     </div>
 
-    <!-- Simple JS for quiz -->
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- Quiz JS -->
     <script>
         document.getElementById('checkBtn').addEventListener('click', function() {
-            const answers = {
-                q1: 'b',
-                q2: 'b',
-                q3: 'b'
-            };
+            const answers = { q1: 'b', q2: 'b', q3: 'b' };
             let score = 0;
+
             const q1 = document.querySelector('input[name="q1opt"]:checked');
             const q2 = document.querySelector('input[name="q2opt"]:checked');
             const q3 = document.querySelector('input[name="q3opt"]:checked');
@@ -357,10 +218,20 @@
 
             const scoreEl = document.getElementById('score');
             scoreEl.textContent = "Score: " + score + "/3";
-
-            // small animation
             scoreEl.style.opacity = 0;
             setTimeout(() => { scoreEl.style.opacity = 1; }, 50);
+
+            // 🎉 Confetti when all correct
+            if (score === 3) {
+                const duration = 3 * 1000;
+                const end = Date.now() + duration;
+
+                (function frame() {
+                    confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } });
+                    confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } });
+                    if (Date.now() < end) requestAnimationFrame(frame);
+                })();
+            }
         });
 
         document.getElementById('showExplanations').addEventListener('click', function() {
@@ -374,6 +245,5 @@
             }
         });
     </script>
-
 </body>
 </html>

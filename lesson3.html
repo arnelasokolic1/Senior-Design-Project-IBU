@@ -97,7 +97,7 @@
             background: linear-gradient(to left, #04286b, #bb1f5d);
             border: none;
         }
-        #score { font-weight: bold; margin-top: 10px; }
+        #score { font-weight: bold; margin-top: 10px; transition: opacity 0.3s ease; }
 
         .lesson-content h2, .lesson-content h3 {
             color: #bb1f5d;
@@ -106,7 +106,6 @@
         }
         .lesson-content h2 { font-size: 26px; }
         .lesson-content h3 { font-size: 20px; }
-
     </style>
 </head>
 <body>
@@ -150,8 +149,6 @@
             <p>
                 Example: MakerDAO lets token holders vote on decisions like collateral types, stability fees, and protocol upgrades.
             </p>
-
-           
         </div>
 
         <!-- Quiz Section -->
@@ -226,6 +223,9 @@
         </div>
     </div>
 
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
     <!-- Quiz JS -->
     <script>
         document.getElementById('checkBtn').addEventListener('click', function() {
@@ -241,7 +241,36 @@
             if(q3 && q3.value === answers.q3) score++;
 
             const scoreEl = document.getElementById('score');
-            scoreEl.textContent = "Score: " + score + "/3";
+            scoreEl.style.opacity = 0;
+            setTimeout(() => {
+                scoreEl.textContent = "Score: " + score + "/3";
+                scoreEl.style.opacity = 1;
+            }, 100);
+
+            // 🎉 Trigger confetti when all answers are correct
+            if (score === 3) {
+                const duration = 3 * 1000;
+                const end = Date.now() + duration;
+
+                (function frame() {
+                    confetti({
+                        particleCount: 7,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 }
+                    });
+                    confetti({
+                        particleCount: 7,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 }
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            }
         });
 
         document.getElementById('showExplanations').addEventListener('click', function() {
@@ -255,6 +284,5 @@
             }
         });
     </script>
-
 </body>
 </html>
