@@ -16,15 +16,29 @@
       color: white;
     }
 
+    /* Updated Navbar Styles from rev code */
     .navbar {
-      background: linear-gradient(to right, #0d1b2a, #1b263b, #2a3b5a);
+      background: linear-gradient(to left, #181A2F, #242E49, #37415C);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      padding: 0.8rem 2rem;
     }
 
     .navbar .navbar-brand,
     .navbar .nav-link {
-      color: white;
+      color: #fff !important;
       font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .navbar .nav-link:hover {
+      color: #bb1f5d !important;
+    }
+
+    .navbar-nav {
+      margin-left: auto; /* Align links to the right */
     }
 
     .container {
@@ -172,15 +186,35 @@
     #chatbot-input button:hover {
       background: #bb1f5d;
     }
+
+    /* Make Join button glow */
+    .btn-community {
+      border: 2px solid #bb1f5d;
+      color: #fff;
+      background: transparent;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-community:hover {
+      background: #bb1f5d;
+      box-shadow: 0 0 20px #bb1f5d;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Quiz App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="home_page.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About the Quiz</a></li>
           <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
@@ -202,16 +236,15 @@
   </div>
 
   <div class="container mt-5">
-    <hr class="section-divider">
+    <!-- Join Community moved UP -->
     <div class="mt-5 p-4 rounded" style="background: linear-gradient(to right, #243B55, #141E30); color: white;">
       <h4>💡 Did You Know?</h4>
       <p>The very first real-world Bitcoin transaction was in 2010 when 10,000 BTC were used to buy two pizzas!</p>
     </div>
 
-    <div class="mt-5 text-center">
-      <p>Want to stay updated on new blockchain lessons?</p>
-      <button class="btn btn-outline-light">📩 Join Our Community</button>
-    </div>
+    <hr class="section-divider">
+
+    <div class="mt-5 text-center"> <p>Want to stay updated on new blockchain lessons?</p> <button class="btn btn-community">📩 Join Our Community</button> </div>
   </div>
 
   <div id="chatbot-button">
@@ -273,12 +306,10 @@
     function getBotReply(userText) {
       const lower = userText.toLowerCase();
 
-      // Greeting detection
       if (greetings.some(greet => lower.startsWith(greet))) {
         return "👋 Hello! How can I help you today? You can ask me about blockchain, Bitcoin, Ethereum, NFTs, or DeFi.";
       }
 
-     
       for (const keyword in knowledgeBase) {
         if (isCloseMatch(lower, keyword)) {
           return knowledgeBase[keyword];
@@ -288,7 +319,6 @@
       return "❓ I'm not sure about that yet. Try asking me about blockchain, Bitcoin, Ethereum, NFTs, or smart contracts!";
     }
 
-
     function isCloseMatch(input, keyword) {
       if (input.includes(keyword)) return true;
 
@@ -296,7 +326,6 @@
       return distance <= 2;
     }
 
-    // Levenshtein distance implementation
     function levenshtein(a, b) {
       const m = [];
       for (let i = 0; i <= b.length; i++) m[i] = [i];
