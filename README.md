@@ -32,12 +32,12 @@ https://senior-design-project-ibu.vercel.app/
 ### **Installation Instructions**
 1. Clone this repository:
     ```bash
-    git clone https://github.com/arnelasokolic1/Software-Engineering-Project.git
+    git clone https://github.com/arnelasokolic1/Senior-Design-Project-IBU.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd Software-Engineering-Project
+    cd Senior-Design-Project-IBU
     ```
 
 3. Install the necessary dependencies:
