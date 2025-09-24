@@ -121,15 +121,38 @@
   .progress { height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
   .progress-bar { font-size: 12px; font-weight: bold; }
 
-  .mascot {
-    width: 80px; height: 80px; cursor: pointer;
-    position: fixed; right: 40px; top: 50%; transform: translateY(-50%);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
-    z-index: 900;
-    border-radius: 0;
-  }
-  .mascot:hover { transform: translateY(-50%) scale(1.1); }
+.mascot {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+  z-index: 900;
+
+  border-radius: 50%; 
+  padding: 10px;
+  
+  /* Gradient border */
+  border: 4px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(135deg, #1a73e8, #0a3d91, #bb1f5d) border-box;
+
+  /* Glow effect */
+  box-shadow: 0 0 10px rgba(26,115,232,0.6),   /* blue glow */
+              0 0 15px #bb1f5d(187,31,93,0.6);   /* pink glow */
+}
+
+.mascot:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(26,115,232,0.8), 
+              0 0 20px #bb1f5d(187,31,93,0.8);
+}
+
+
+  
 
   .fact {
     position: fixed; right: 140px; top: 50%; transform: translateY(-50%);
