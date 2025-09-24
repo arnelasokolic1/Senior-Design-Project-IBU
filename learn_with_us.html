@@ -107,7 +107,7 @@
 
     #chatbot-header {
       background: #1b263b;
-      color: #bb1f5d;
+      color: #ffffff;
       padding: 12px;
       text-align: center;
       font-weight: bold;
@@ -219,7 +219,7 @@
   </div>
 
   <div id="chatbot-window">
-    <div id="chatbot-header">🤖 Blockchain Bot</div>
+    <div id="chatbot-header">🤖 Blocky</div>
     <div id="chatbot-messages"></div>
     <div id="chatbot-input">
       <input type="text" id="userInput" placeholder="Type your message... (max 300 chars)">
@@ -278,7 +278,7 @@
         return "👋 Hello! How can I help you today? You can ask me about blockchain, Bitcoin, Ethereum, NFTs, or DeFi.";
       }
 
-      // Fuzzy match keywords (so typos like 'etheroeum' still match)
+     
       for (const keyword in knowledgeBase) {
         if (isCloseMatch(lower, keyword)) {
           return knowledgeBase[keyword];
@@ -288,7 +288,7 @@
       return "❓ I'm not sure about that yet. Try asking me about blockchain, Bitcoin, Ethereum, NFTs, or smart contracts!";
     }
 
-    // Simple fuzzy match: checks if keyword is within 2 char difference
+
     function isCloseMatch(input, keyword) {
       if (input.includes(keyword)) return true;
 
