@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button id="login">Connect MetaMask</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.2.2/web3.min.js"></script>
+<script>
+document.getElementById('login').addEventListener('click', async () => {
+    if (window.ethereum) {
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            alert('Connected: ' + accounts[0]);
+        } catch (err) {
+            alert('Connection rejected or failed');
+            console.error(err);
+        }
+    } else {
+        alert('MetaMask not installed');
+    }
+});
+</script>
+</body>
+</html>
