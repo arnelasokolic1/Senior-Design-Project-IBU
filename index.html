@@ -7,134 +7,159 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.2.2/web3.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Blockchain Quiz App</title>
-    <style>
-        /* General styling */
-        body {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            background: linear-gradient(to left, #181A2F, #242E49, #37415C);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            color: white;
-            text-align: center;
-        }
+   <style>
+    /* General styling */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: radial-gradient(circle at top left, #1e1f3b, #14162b);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        color: #f5f7ff;
+        text-align: center;
+    }
 
-        /* Greeting text styling */
+    /* Greeting text styling */
+    h1 {
+        font-size: 2.8em;
+        font-weight: 700;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #a99fff, #7a66ff, #4aeaff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Button styling */
+    button {
+        background: linear-gradient(135deg, #6c63ff, #9a8cff);
+        color: white;
+        font-size: 1em;
+        font-weight: 600;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(108, 99, 255, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        background: linear-gradient(135deg, #8a81ff, #b2a6ff);
+    }
+
+    /* Admin button styling */
+    #adminButton {
+        margin-top: 15px;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        box-shadow: 0 6px 15px rgba(255, 118, 153, 0.3);
+    }
+
+    #adminButton:hover {
+        background: linear-gradient(135deg, #ff9dbd, #ffb5cf);
+        box-shadow: 0 8px 20px rgba(255, 118, 153, 0.4);
+    }
+
+    /* Address container styling */
+    #addressContainer {
+        margin-top: 25px;
+        text-align: center;
+    }
+
+    /* Address display box styling */
+    #address {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e0e3ff;
+        font-weight: 500;
+        padding: 18px 24px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: fit-content;
+        font-size: 1.1em;
+        text-align: center;
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+    }
+
+    #address span {
+        color: #4aeaff;
+        font-weight: 600;
+    }
+
+    /* Next page button styling */
+    #nextPageButton {
+        margin-top: 25px;
+        background: linear-gradient(135deg, #4aeaff, #6c63ff);
+        color: white;
+        font-size: 1.4em;
+        padding: 14px 22px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(76, 255, 230, 0.3);
+    }
+
+    #nextPageButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(76, 255, 230, 0.5);
+    }
+
+    /* Mobile & Tablet Responsiveness */
+    @media (max-width: 768px) {
         h1 {
-            font-size: 3em;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 15px;
         }
 
-        /* Button styling */
         button {
-            background-color: white;
-            color: #433166;
-            font-size: 1em;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
+            font-size: 0.9em;
+            padding: 10px 22px;
         }
 
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Address container styling */
-        #addressContainer {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* Address display box styling */
         #address {
-            background: rgb(238, 238, 238);
-            color: #04286b;
-            font-weight: bold;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgb(243, 224, 255);
-            width: fit-content;
-            font-size: 1.2em;
-            text-align: center;
-            border: 3px solid #ffffff; 
+            font-size: 1em;
+            padding: 15px 20px;
         }
 
-        /* Next page button styling */
         #nextPageButton {
-            margin-top: 20px;
-            background-color: white;
-            color: #433166;
-            font-size: 1.5em;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.2s ease;
+            font-size: 1.2em;
+            padding: 10px 18px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 15px;
         }
 
-        #nextPageButton:hover {
-            transform: scale(1.1);
+        h1 {
+            font-size: 1.6em;
         }
 
-        /* Admin button styling */
-        #adminButton {
-            margin-top: 15px; /* A little space from the MetaMask button */
+        button {
+            font-size: 0.85em;
+            padding: 8px 18px;
         }
 
-        /* Mobile & Tablet Responsiveness */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em; /* Smaller text on mobile */
-                margin-bottom: 15px;
-            }
-
-            button {
-                font-size: 0.9em; /* Smaller buttons */
-                padding: 8px 18px;
-            }
-
-            #address {
-                font-size: 1em; /* Smaller font for address display */
-                padding: 15px;
-            }
-
-            #nextPageButton {
-                font-size: 1.2em; /* Adjust size for mobile screens */
-                padding: 8px 16px;
-            }
+        #address {
+            font-size: 0.9em;
+            padding: 12px 16px;
         }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 10px; /* Add some padding for mobile */
-            }
-
-            h1 {
-                font-size: 1.5em; /* Further reduce text size for small screens */
-            }
-
-            #address {
-                font-size: 0.9em; /* Adjust address font size */
-                padding: 12px;
-            }
-
-            button {
-                font-size: 0.8em; /* Reduce button size for mobile */
-                padding: 6px 14px;
-            }
-
-            #nextPageButton {
-                font-size: 1.1em; /* Adjust button size */
-                padding: 8px 15px;
-            }
+        #nextPageButton {
+            font-size: 1.1em;
+            padding: 9px 16px;
         }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <h1 id="welcomeText">Hello! Welcome to Blockchain Quiz</h1>
