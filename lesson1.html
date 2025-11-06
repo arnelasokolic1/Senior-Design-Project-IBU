@@ -10,9 +10,9 @@
 
     <style>
         body {
-            background: linear-gradient(to left, #04286b, #bb1f5d);
-            color: white;
-            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top left, #1e1f3b, #14162b);
+            color: #f5f7ff;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container {
@@ -24,11 +24,14 @@
             font-size: 40px;
             margin-bottom: 20px;
             font-weight: 700;
+            background: linear-gradient(90deg, #a99fff, #7a66ff, #4aeaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .lesson-content {
-            background-color: white;
-            color: #04286b;
+            background-color: rgba(30,31,59,0.85);
+            color: #f5f7ff;
             padding: 36px;
             border-radius: 12px;
             font-size: 18px;
@@ -42,7 +45,7 @@
         }
 
         .lesson-content h2, .lesson-content h3 {
-            color: #bb1f5d;
+            color: #a99fff;
             margin-top: 18px;
             margin-bottom: 10px;
         }
@@ -59,21 +62,46 @@
             margin-right: auto;
         }
 
+        /* 🌌 Navbar */
         .navbar {
-            background: linear-gradient(to left, #181A2F, #242E49, #37415C);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
-        .navbar .navbar-brand, .navbar .nav-link {
-            color: white !important;
-            font-size: 18px;
+
+        .navbar .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #a99fff, #7a66ff, #4aeaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar .nav-link {
+            color: #cfcfff !important;
+            font-size: 16px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #4aeaff !important;
+        }
+
+        .navbar .nav-link.active {
+            color: #cfcfff !important;
+            font-weight: 500;
         }
 
         .return-btn {
-            background: linear-gradient(to left, #04286b, #bb1f5d);
-            color: white;
+            background: linear-gradient(to left, #a99fff, #4aeaff);
+            color: #1e1f3b;
             font-size: 18px;
             padding: 12px 22px;
             border-radius: 8px;
-            border: 2px solid white;
+            border: 2px solid #4aeaff;
             cursor: pointer;
             margin-top: 40px;
             transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -82,14 +110,27 @@
         }
         .return-btn:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 14px rgba(74,234,255,0.6);
         }
 
-        .quiz-card { margin-top: 24px; padding: 20px; border-radius: 10px; background: #ffffff; color: #04286b; box-shadow: 0 6px 20px rgba(0,0,0,0.15); max-width: 800px; margin-left:auto; margin-right:auto; text-align:left; }
-        .quiz-card h3 { color: #bb1f5d; }
+        .quiz-card { 
+            margin-top: 24px; 
+            padding: 20px; 
+            border-radius: 10px; 
+            background: rgba(30,31,59,0.85); 
+            color: #f5f7ff; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
+            max-width: 800px; 
+            margin-left:auto; 
+            margin-right:auto; 
+            text-align:left; 
+        }
+        .quiz-card h3 { color: #a99fff; }
+
         .btn-primary.custom {
-            background: linear-gradient(to left, #04286b, #bb1f5d);
+            background: linear-gradient(to left, #a99fff, #4aeaff);
             border: none;
+            color: #1e1f3b;
         }
 
         @media (max-width: 768px) {
@@ -102,15 +143,19 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Quiz App</a>
+            <a class="navbar-brand" href="home_page.html">BLOCKLEARN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="home_page.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About the Quiz</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="fill_in_blanks.html">Fill In The Blanks</a></li>
                     <li class="nav-item"><a class="nav-link" href="learn_with_us.html">Learn with Us</a></li>
                 </ul>
@@ -164,7 +209,6 @@
         <!-- Quiz -->
         <div class="quiz-card mt-4" id="quiz">
             <h3>Quick Quiz — check what you learned</h3>
-
             <div id="q1" class="mb-3">
                 <strong>1) What links two blocks together?</strong>
                 <div class="form-check">
@@ -219,7 +263,7 @@
                 <div id="score" class="ms-auto fw-bold" style="align-self:center;"></div>
             </div>
 
-            <div id="explanations" style="display:none; margin-top:14px; color:#444;">
+            <div id="explanations" style="display:none; margin-top:14px; color:#cfcfff;">
                 <div><strong>Q1:</strong> Blocks store the previous block's hash which links them.</div>
                 <div><strong>Q2:</strong> The private key is secret — never share it.</div>
                 <div><strong>Q3:</strong> Proof of Work uses heavy computation.</div>
