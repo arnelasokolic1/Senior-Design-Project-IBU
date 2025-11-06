@@ -197,29 +197,34 @@
   .unanswered {
     background: rgba(255, 255, 255, 0.1) !important;
   }
-
-  /* 🎬 Modal */
-  .modal-header {
+/* 🎬 Modal */
+.modal-header {
     background: linear-gradient(135deg, #6c63ff, #9a8cff);
-    color: white;
+    color: #000000; /* changed from white to black */
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-  }
+}
 
-  .modal-footer .btn-primary {
+.modal-body {
+    color: #000000; /* changed from white to black */
+}
+
+.modal-footer .btn-primary {
     background: linear-gradient(135deg, #4aeaff, #6c63ff);
     border: none;
     border-radius: 8px;
     font-weight: 600;
     padding: 10px 20px;
     transition: all 0.25s;
-    color: #fff;
-  }
+    color: #000000; /* changed from white to black */
+}
 
-  .modal-footer .btn-primary:hover {
+.modal-footer .btn-primary:hover {
     background: linear-gradient(135deg, #8a81ff, #b2a6ff);
     transform: translateY(-2px);
-  }
+    color: #000000; /* ensure text remains black on hover */
+}
+
 
   /* 📱 Responsive */
   @media (max-width: 992px) {
