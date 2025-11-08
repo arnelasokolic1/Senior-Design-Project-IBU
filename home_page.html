@@ -197,32 +197,73 @@
   .unanswered {
     background: rgba(255, 255, 255, 0.1) !important;
   }
-/* 🎬 Modal */
+/* 🎬 Final Results Modal - Modern Glass Style */
+.modal-content {
+  background: rgba(30, 31, 59, 0.6); /* semi-transparent dark background */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 25px rgba(122, 102, 255, 0.35);
+  overflow: hidden;
+  animation: fadeInModal 0.4s ease-in-out;
+}
+
+/* Smooth fade animation */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header with glowing accent line */
 .modal-header {
-    background: linear-gradient(135deg, #6c63ff, #9a8cff);
-    color: #000000; /* changed from white to black */
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.3), rgba(74, 234, 255, 0.2));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e8eaff;
+  text-align: center;
+  padding: 1.2rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
+/* Body with clean contrast and soft text */
 .modal-body {
-    color: #000000; /* changed from white to black */
+  color: #cfd3ff;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
+/* Footer with subtle glow */
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+}
+
+/* Modern button styling */
 .modal-footer .btn-primary {
-    background: linear-gradient(135deg, #4aeaff, #6c63ff);
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    padding: 10px 20px;
-    transition: all 0.25s;
-    color: #000000; /* changed from white to black */
+  background: linear-gradient(135deg, #6c63ff, #4aeaff);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 28px;
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.4);
+  transition: all 0.3s ease;
 }
 
 .modal-footer .btn-primary:hover {
-    background: linear-gradient(135deg, #8a81ff, #b2a6ff);
-    transform: translateY(-2px);
-    color: #000000; /* ensure text remains black on hover */
+  background: linear-gradient(135deg, #8a81ff, #b2a6ff);
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(122, 102, 255, 0.6);
 }
 
 
@@ -293,15 +334,15 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content shadow-lg rounded-4">
         <div class="modal-header">
-          <h5 class="modal-title" id="congratulationsLabel">🎉 Congratulations!</h5>
+          <h5 class="modal-title" id="congratulationsLabel">Congratulations!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          You have completed the quiz. Great job! 🎓<br>
+          You have completed the quiz. Great job! <br>
           You got <span id="correctAnswersCount"></span> correct answers.
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-primary" onclick="restartQuiz()">🔄 Try Again</button>
+          <button type="button" class="btn btn-primary" onclick="restartQuiz()"> Try Again</button>
         </div>
       </div>
     </div>
