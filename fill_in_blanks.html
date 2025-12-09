@@ -17,32 +17,57 @@ body {
   margin-left: 300px;
   background: radial-gradient(circle at top left, #1e1f3b, #14162b);
   color: #f5f7ff;
+  overflow-x: hidden;
 }
 
 /* 🌠 Navbar */
 .navbar {
-  background: linear-gradient(to left, #181A2F, #242E49, #37415C);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1100;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
-.navbar .navbar-brand,
+.navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #a99fff, #7a66ff, #4aeaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .navbar .nav-link {
-  color: #fff !important;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: color 0.3s;
+  color: #cfcfff !important;
+  font-size: 16px;
+  margin-left: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .navbar .nav-link:hover {
-  color: #bb1f5d !important;
+  color: #4aeaff !important;
+}
+
+.navbar .nav-link.active {
+  color: #cfcfff !important;
+  font-weight: 500;
 }
 
 /* 🌟 Sidebar */
 #levelSidebar {
   position: fixed;
-  top: 70px;
+  top: 80px;
   left: 20px;
   width: 250px;
   background: rgba(255,255,255,0.05);
@@ -97,7 +122,6 @@ body {
 
 #levelSidebar .btn-finish:hover {
   transform: scale(1.05);
-  background: linear-gradient(to right, #7a66ff, #4aeaff);
 }
 
 /* 🌟 Main Container */
@@ -108,6 +132,7 @@ body {
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   max-width: 720px;
+  margin: auto;
 }
 
 h1 {
@@ -164,7 +189,6 @@ input:focus {
 
 .btn-finish:hover {
   transform: scale(1.05);
-  background: linear-gradient(to right, #a99fff, #7a66ff);
 }
 
 /* 🌟 Statistics Panel */
@@ -190,9 +214,6 @@ input:focus {
   font-size: 20px;
 }
 
-.progress { height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
-.progress-bar { font-size: 12px; font-weight: bold; }
-
 /* 🌟 Mascot */
 .mascot {
   width: 80px;
@@ -208,14 +229,15 @@ input:focus {
   padding: 10px;
   background: linear-gradient(#ffffff, #ffffff) padding-box,
               linear-gradient(135deg, #1a73e8, #0a3d91, #bb1f5d) border-box;
-  box-shadow: none; /* Removed glow to match previous design */
 }
 
 .mascot:hover { transform: translateY(-50%) scale(1.1); }
 
 /* 🌟 Fact Box */
 .fact {
-  position: fixed; right: 140px; top: 50%;
+  position: fixed;
+  right: 140px;
+  top: 50%;
   transform: translateY(-50%);
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(8px);
@@ -235,52 +257,56 @@ input:focus {
   to {opacity:1; transform:translateY(-50%) translateX(0);}
 }
 
-/* 🌟 Responsive */
+/* 🌟 Responsive Fixes */
 @media (max-width: 992px) {
-  body { margin-left: 0; padding-top: 140px; }
-  #levelSidebar { position: relative; width: 100%; margin-bottom: 20px; }
-  #statisticsPanel { right: 20px; top: auto; bottom: 20px; width: 95%; }
-  .mascot { right: 20px; top: auto; bottom: 100px; }
-  .fact { right: 20px; bottom: 180px; top: auto; }
+  body {
+    margin-left: 0;
+    padding-top: 120px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar .nav-link {
+    margin: 8px 0;
+  }
+
+  #levelSidebar,
+  #statisticsPanel {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+    left: 0;
+    top: auto;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto 60px;
+  }
+
+  .mascot,
+  .fact {
+    display: none;
+  }
 }
 
-/* 🌠 Navbar (updated to first design) */
-.navbar {
-  background: rgba(255, 255, 255, 0.05); /* frosted glass */
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  padding: 1rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
 
-.navbar .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #a99fff, #7a66ff, #4aeaff); /* gradient text */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+  input {
+    font-size: 14px;
+  }
 
-.navbar .nav-link {
-  color: #cfcfff !important; /* normal link color */
-  font-size: 16px;
-  margin-left: 20px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.navbar .nav-link:hover {
-  color: #4aeaff !important; /* bright accent on hover */
-}
-
-.navbar .nav-link.active {
-  color: #cfcfff !important; /* active link color */
-  font-weight: 500;
+  .btn-finish {
+    font-size: 15px;
+    padding: 10px;
+  }
 }
 
 </style>
@@ -320,15 +346,27 @@ input:focus {
 </div>
 
 <div id="statisticsPanel">
-<h4>Your Statistics</h4>
-<p id="totalAnswered">Total Questions Answered: 0</p>
-<div class="progress">
-  <div id="correctBar" class="progress-bar bg-success" style="width:0%">0% Correct</div>
+  <h4>Your Statistics</h4>
+
+  <p id="totalAnswered">Total Questions Answered: 0</p>
+  <p id="totalAttempts">Total Quiz Attempts: 0</p>
+
+  <div class="progress">
+    <div id="correctBar" class="progress-bar bg-success" style="width:0%">
+      0% Correct
+    </div>
+  </div>
+
+  <div class="progress mt-2">
+    <div id="wrongBar" class="progress-bar bg-danger" style="width:0%">
+      0% Wrong
+    </div>
+  </div>
+
+  <p id="avgTime">Average Response Time: 3s</p>
+  <p id="fastestTime">Fastest Answer: 5s</p>
 </div>
-<div class="progress">
-  <div id="wrongBar" class="progress-bar bg-danger" style="width:0%">0% Wrong</div>
-</div>
-</div>
+
 
 <div class="container" id="quizContainer">
 <h1>Fill in the Blanks</h1>
