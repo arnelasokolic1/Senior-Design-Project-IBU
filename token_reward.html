@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blockchain Quiz</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; padding:40px }
+    .question { margin-bottom:20px }
+    button { padding:10px 20px; font-size:16px }
+  </style>
+</head>
+<body>
+
+<h2>Blockchain Quiz (5 questions)</h2>
+
+<div id="quiz"></div>
+<button onclick="submitQuiz()">Submit Quiz</button>
+
+<p id="status"></p>
+
+<script>
+const questions = [
+  {
+    q: "What is a blockchain?",
+    options: [
+      "A centralized database",
+      "A distributed ledger",
+      "A cloud storage",
+      "A programming language"
+    ],
+    correct: 1
+  },
+  {
+    q: "Which consensus does Ethereum use?",
+    options: [
+      "Proof of Work",
+      "Proof of Authority",
+      "Proof of Stake",
+      "Delegated Proof"
+    ],
+    correct: 2
+  },
+  {
+    q: "What does a smart contract do?",
+    options: [
+      "Stores files",
+      "Executes code on blockchain",
+      "Mines crypto",
+      "Creates wallets"
+    ],
+    correct: 1
+  },
+  {
+    q: "What is MetaMask?",
+    options: [
+      "Blockchain",
+      "Token",
+      "Wallet",
+      "Exchange"
+    ],
+    correct: 2
+  },
+  {
+    q: "What is an ERC-20 token?",
+    options: [
+      "NFT standard",
+      "Ethereum token standard",
+      "Consensus algorithm",
+      "Blockchain explorer"
+    ],
+    correct: 1
+  }
+];
+
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((q, i) => {
+  const div = document.createElement("div");
+  div.className = "question";
+  div.innerHTML = `<p>${i+1}. ${q.q}</p>` +
+    q.options.map((opt, idx) =>
+      `<label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label><br>`
+    ).join("");
+  quizDiv.appendChild(div);
+});
+
+async function submitQuiz() {
+  let correctAnswers = 0;
+
+  questions.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (selected && parseInt(selected.value) === q.correct) {
+      correctAnswers++;
+    }
+  });
+
+  if (correctAnswers !== 5) {
+    document.getElementById("status").innerText =
+      "❌ Quiz failed. All 5 answers must be correct.";
+    return;
+  }
+
+  if (!window.ethereum) {
+    alert("MetaMask not found");
+    return;
+  }
+
+  try {
+    document.getElementById("status").innerText =
+      "Connecting to MetaMask...";
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+
+    const tokenAddress = "0xCB460548b852E064c8b1bd0274a666F459cDcE7b";
+    const recipient = "0xE617eC00e67B36725e989059e2B63933fe451b75";
+
+    const abi = [
+      "function transfer(address to, uint256 amount) returns (bool)",
+      "function decimals() view returns (uint8)"
+    ];
+
+    const token = new ethers.Contract(tokenAddress, abi, signer);
+
+    const decimals = await token.decimals();
+    const amount = ethers.parseUnits("1", decimals);
+
+    document.getElementById("status").innerText =
+      "Sending 1 EPC token...";
+
+    const tx = await token.transfer(recipient, amount);
+    await tx.wait();
+
+    document.getElementById("status").innerText =
+      "✅ Success! 1 EPC token sent.";
+  } catch (err) {
+    console.error(err);
+    document.getElementById("status").innerText =
+      "❌ Transaction failed.";
+  }
+}
+</script>
+
+</body>
+</html>
