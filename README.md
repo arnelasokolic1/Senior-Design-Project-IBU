@@ -65,6 +65,8 @@ https://senior-design-project-ibu.vercel.app/
 - **Admin Panel:** Admin users can add, remove, and manage quiz content.
 - **Fill in the Blanks Game:** Test your blockchain knowledge in a fun and engaging way.
 - **Random Blockchain Facts:** Learn interesting blockchain facts by clicking on a mascot.
+- **Token Quiz:** User can play quiz that has time and user has 30 seconds to complete quiz correctly to get the token reward. After the quiz is finished correctly, user gets one token sent to the MetaMask address he entered.
+- **User Profile:** User can change their name, add bio and change avatar picture.
 
 
 **Mobile Responsiveness**  
