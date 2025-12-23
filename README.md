@@ -66,25 +66,6 @@ https://senior-design-project-ibu.vercel.app/
 - **Fill in the Blanks Game:** Test your blockchain knowledge in a fun and engaging way.
 - **Random Blockchain Facts:** Learn interesting blockchain facts by clicking on a mascot.
 
----
-
-**Roadmap**
-
-**Release 1: May 2025**
-- User Registration with MetaMask
-- Quiz Questions on the Home Page
-- Progress Tracker
-- Styling of Correct and Incorrect Answers
-- Contact Us Page
-- Admin Panel for Managing Content
-
-**Release 2: June 2025**
-- Showing and Hiding the Statistics Section
-- Mascot Introduction
-
-
----
-
 
 **Mobile Responsiveness**  
 The application is designed to be fully responsive across all screen sizes, providing a seamless user experience whether you’re on a mobile phone, tablet, or desktop.
